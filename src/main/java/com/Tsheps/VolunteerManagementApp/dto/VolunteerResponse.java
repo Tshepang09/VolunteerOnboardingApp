@@ -1,5 +1,6 @@
 package com.Tsheps.VolunteerManagementApp.dto;
 
+import com.Tsheps.VolunteerManagementApp.enums.ClassAllocation_1030;
 import com.Tsheps.VolunteerManagementApp.enums.ClassAllocation_830;
 import com.Tsheps.VolunteerManagementApp.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,7 +22,7 @@ public class VolunteerResponse {
 
     private String firstName;
 
-    private String LastName;
+    private String lastName;
 
     private Gender gender;
 
@@ -31,7 +32,7 @@ public class VolunteerResponse {
 
     private ClassAllocation_830 classAllocation1;
 
-    private ClassAllocation_830 classAllocation2;
+    private ClassAllocation_1030 classAllocation2;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

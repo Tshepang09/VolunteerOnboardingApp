@@ -1,13 +1,23 @@
 package com.Tsheps.VolunteerManagementApp.model;
 
+import com.Tsheps.VolunteerManagementApp.enums.ClassAllocation_1030;
 import com.Tsheps.VolunteerManagementApp.enums.Gender;
 import com.Tsheps.VolunteerManagementApp.enums.ClassAllocation_830;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Data
+@Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class AttendanceRecord {
 
     @Id
@@ -16,14 +26,14 @@ public class AttendanceRecord {
     private Long attendanceId;
 
     @JoinColumn(name = "volunteerId")
-    @OneToOne(fetch  = FetchType.LAZY)
-    private Volunteer volunteer;
+    @ManyToOne(fetch  = FetchType.LAZY)
+    private Volunteer Volunteer;
 
     @Column(name = "first_name", nullable = false)
-    private String firstName;
+    private String firstname;
 
     @Column(name = "last_name", nullable = false)
-    private String LastName;
+    private String lastname;
 
     private String email;
 
@@ -34,10 +44,12 @@ public class AttendanceRecord {
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    private ClassAllocation_830 session1Class;
+    private ClassAllocation_830 classAllocation_830;
 
     @Enumerated(EnumType.STRING)
-    private ClassAllocation_830 session2Class;
+    private ClassAllocation_1030 classAllocation_1030;
+
+    private LocalDate serviceDate;
 
     @Column(name = "signed_in_at", nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
