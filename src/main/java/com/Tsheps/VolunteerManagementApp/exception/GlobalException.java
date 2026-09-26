@@ -24,4 +24,8 @@ public class GlobalException extends RuntimeException {
     public ResponseEntity<String> handleVolunteerAlreadySignedInException(VolunteerAlreadySignedInException vas){
         return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(vas.getMessage());
 }
+@ExceptionHandler(InvalidLoginCredentialsException.class)
+    ResponseEntity<String> handleInvalidLoginCredentialsException(InvalidLoginCredentialsException ilce){
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ilce.getMessage());
+}
 }

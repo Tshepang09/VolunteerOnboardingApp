@@ -1,8 +1,12 @@
 package com.Tsheps.VolunteerManagementApp.repository;
 
 import com.Tsheps.VolunteerManagementApp.model.User;
+import com.Tsheps.VolunteerManagementApp.model.Users;
 import com.Tsheps.VolunteerManagementApp.model.Volunteer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepo extends JpaRepository<User,Long> {
+import java.util.Optional;
+
+public interface UsersRepo extends JpaRepository<Users,Long> {
+    Optional<Users> findByEmail(String email);
 }

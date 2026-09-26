@@ -22,7 +22,7 @@ public class UserCredentials {
 
     @OneToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "userId")
-    private User User;
+    private Users User;
 
     private String password;
 
