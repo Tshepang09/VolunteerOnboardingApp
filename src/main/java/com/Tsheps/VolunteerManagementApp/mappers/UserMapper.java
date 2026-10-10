@@ -1,12 +1,12 @@
 package com.Tsheps.VolunteerManagementApp.mappers;
 
 import com.Tsheps.VolunteerManagementApp.dto.auth.RegisterRequest;
-import com.Tsheps.VolunteerManagementApp.dto.auth.RegisterResponse;
+import com.Tsheps.VolunteerManagementApp.dto.auth.UserResponse;
 import com.Tsheps.VolunteerManagementApp.model.Users;
 
 public class UserMapper {
-    public static RegisterResponse toRegisterResponse(Users user){
-        return RegisterResponse.builder()
+    public static UserResponse toUserResponse(Users user){
+        return UserResponse.builder()
                 .userId(user.getUserId())
                 .firstname(user.getFirstname())
                 .lastname(user.getLastname())

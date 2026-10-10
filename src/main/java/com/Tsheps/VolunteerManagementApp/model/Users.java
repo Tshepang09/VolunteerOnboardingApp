@@ -20,11 +20,14 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-
+@Column(nullable = false,unique = true)
     private String firstname;
+@Column(nullable = false,unique = true)
     private String lastname;
+@Column(nullable = false,unique = true)
     private String email;
 
+@Column(nullable = false,unique = true)
     private String cellNumber;
 
     @Enumerated(EnumType.STRING)

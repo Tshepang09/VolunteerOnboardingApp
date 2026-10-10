@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface VolunteerRepo extends JpaRepository<Volunteer,Long> {
     boolean existsByCellNumber(String cellNumber);
+    boolean existsByCellNumberOrEmail(String cellNumber, String email);
     Optional<Volunteer> findByEmail(String email);
 }

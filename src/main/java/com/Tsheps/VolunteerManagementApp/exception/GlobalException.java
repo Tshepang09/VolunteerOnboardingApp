@@ -1,12 +1,16 @@
 package com.Tsheps.VolunteerManagementApp.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.Tsheps.VolunteerManagementApp.dto.ExceptionHandlerResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+
+@RequiredArgsConstructor
 @RestControllerAdvice
 public class GlobalException extends RuntimeException {
+    ExceptionHandlerResponse exceptionHandlerResponse;
 //    public GlobalException(String message) {
 //        super(message);
 //    }
@@ -27,5 +31,24 @@ public class GlobalException extends RuntimeException {
 @ExceptionHandler(InvalidLoginCredentialsException.class)
     ResponseEntity<String> handleInvalidLoginCredentialsException(InvalidLoginCredentialsException ilce){
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ilce.getMessage());
+}
+
+@ExceptionHandler(UnauthorizedCredentialsException.class)
+    ExceptionHandlerResponse handleUnauthorisedCredentialsException(UnauthorizedCredentialsException uce){
+    HttpStatusCode statusCode = HttpStatus.UNAUTHORIZED;
+    return (exceptionHandlerResponse.builder()
+            .statusValue(statusCode.value())
+            .statusMessage(HttpStatus.UNAUTHORIZED.name())
+            .message(uce.getMessage())
+            .build());
+}
+@ExceptionHandler(UserNotFoundException.class)
+     ExceptionHandlerResponse handleUserNotFoundException(UserNotFoundException unfe){
+    HttpStatusCode statusCode = HttpStatus.NOT_FOUND;
+    return exceptionHandlerResponse.builder()
+            .statusValue(statusCode.value())
+            .statusMessage(HttpStatus.NOT_FOUND.name())
+            .message(unfe.getMessage())
+            .build();
 }
 }

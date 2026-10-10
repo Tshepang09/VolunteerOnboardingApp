@@ -22,8 +22,9 @@ public class UserCredentials {
 
     @OneToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "userId")
-    private Users User;
+    private Users user;
 
+    @Column(nullable = false)
     private String password;
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
