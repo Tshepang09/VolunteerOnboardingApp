@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.Tsheps</groupId>
 	<artifactId>VolunteerManagementApp</artifactId>
-<!--	<version>0.0.1-SNAPSHOT</version>-->
+	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
 	<url/>
@@ -55,6 +55,10 @@
 		</dependency>
 		<!--JWT END-->
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<!--BCrypt-->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -86,11 +90,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.Tsheps</groupId>
-			<artifactId>VolunteerManagementApp</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

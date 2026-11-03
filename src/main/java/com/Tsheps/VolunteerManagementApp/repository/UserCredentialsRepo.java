@@ -11,4 +11,6 @@ public interface UserCredentialsRepo extends JpaRepository<UserCredentials,Long>
 
     // User_UserId tells the Spring to go into User entity and access the UserId
     void deleteByUser_UserId(Long userId);
+
+    UserCredentials findByUser_UserId(Long userId);
 }

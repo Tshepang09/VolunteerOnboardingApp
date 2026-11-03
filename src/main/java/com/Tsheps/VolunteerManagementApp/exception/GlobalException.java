@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalException extends RuntimeException {
     ExceptionHandlerResponse exceptionHandlerResponse;
-//    public GlobalException(String message) {
-//        super(message);
+//    public GlobalException(String ErrorMessage) {
+//        super(ErrorMessage);
 //    }
 @ExceptionHandler(VolunteerAlreadyExistsException.class)
     public ResponseEntity<String> handleVolunteerAlreadyExistsException(VolunteerAlreadyExistsException vae) {
@@ -37,18 +37,18 @@ public class GlobalException extends RuntimeException {
     ExceptionHandlerResponse handleUnauthorisedCredentialsException(UnauthorizedCredentialsException uce){
     HttpStatusCode statusCode = HttpStatus.UNAUTHORIZED;
     return (exceptionHandlerResponse.builder()
-            .statusValue(statusCode.value())
+            .statusCode(statusCode.value())
             .statusMessage(HttpStatus.UNAUTHORIZED.name())
-            .message(uce.getMessage())
+            .ErrorMessage(uce.getMessage())
             .build());
 }
 @ExceptionHandler(UserNotFoundException.class)
      ExceptionHandlerResponse handleUserNotFoundException(UserNotFoundException unfe){
     HttpStatusCode statusCode = HttpStatus.NOT_FOUND;
     return exceptionHandlerResponse.builder()
-            .statusValue(statusCode.value())
+            .statusCode(statusCode.value())
             .statusMessage(HttpStatus.NOT_FOUND.name())
-            .message(unfe.getMessage())
+            .ErrorMessage(unfe.getMessage())
             .build();
 }
 }

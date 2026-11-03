@@ -57,7 +57,8 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public LoginResponse loginAdmin(LoginRequest loginRequest) {
         //Testing for email match
-        Users user = userRepo.findByEmail(loginRequest.getEmail()).orElseThrow(()-> new InvalidLoginCredentialsException());
+        Users user = userRepo.findByEmail(loginRequest.getEmail());
+//        Users user = userRepo.findByEmail(loginRequest.getEmail()).orElseThrow(()-> new InvalidLoginCredentialsException());
 
         //Testing for password match
         boolean passwordDoesNotExists = userCredentialsRepo.existsByPassword(loginRequest.getPassword());
