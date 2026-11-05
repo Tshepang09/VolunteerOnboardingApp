@@ -38,5 +38,4 @@ public class SecurityConfig {
 //return InMemoryUserDetailsManager;
 //}
     //the UsernamePasswordAuthenticatioFilter uses the UserDetailService to authenticate username and password
-
 }
