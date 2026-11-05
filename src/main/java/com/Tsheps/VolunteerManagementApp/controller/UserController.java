@@ -2,10 +2,12 @@ package com.Tsheps.VolunteerManagementApp.controller;
 
 import com.Tsheps.VolunteerManagementApp.dto.auth.UserResponse;
 import com.Tsheps.VolunteerManagementApp.service.UserService;
+import jakarta.servlet.http.HttpServlet;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +27,8 @@ public class UserController {
         return ResponseEntity.ok().body("Successfully deleted UserId: " + userId);
     }
     @GetMapping("/getAll")
-    public ResponseEntity<List<UserResponse>> getAllUsers(){
-
+    public ResponseEntity<List<UserResponse>> getAllUsers(Authentication auth){
+        log.info("List of users requested by {}", auth.getPrincipal());
         return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
     }
 }

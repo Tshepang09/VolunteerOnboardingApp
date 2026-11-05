@@ -31,11 +31,10 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public UserResponse registerAdmin(RegisterRequest registerRequest) {
         //Test if the email and cellnumber exists in the volunteer data
-
             boolean existsAsVolunteer = volunteerRepo.existsByCellNumberOrEmail(registerRequest.getCellNumber(), registerRequest.getEmail());
            if(existsAsVolunteer){
             log.info("Checking if credentials exist in the volunteer database");
-            throw new UnauthorizedCredentialsException();
+            throw new UnauthorizedCredentialsException("Attempted to register admin with volunteer credentials!");
 }
 
 
