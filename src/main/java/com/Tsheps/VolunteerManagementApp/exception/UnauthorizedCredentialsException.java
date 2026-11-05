@@ -1,8 +1,8 @@
 package com.Tsheps.VolunteerManagementApp.exception;
 
 public class UnauthorizedCredentialsException extends RuntimeException {
-    public UnauthorizedCredentialsException() {
+    public UnauthorizedCredentialsException(String message) {
 
-        super("Attempted to register admin with Volunteer credentials!");
+        super(message);
     }
 }
